@@ -108,10 +108,10 @@
 
   <script>
     function toHex(str) {
-      return [...str].map(function (c) {
-        return c.charCodeAt(0).toString(16);
-      }).join('');
-    }
+  return Array.from(str, ch =>
+    ch.codePointAt(0).toString(16).toUpperCase()
+  ).join(" ");
+}
 
     const apps = [
       {

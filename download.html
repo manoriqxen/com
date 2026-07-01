@@ -110,14 +110,17 @@ footer {
 <body>
 
 <script>
-function fromHex(hex){
-  try{
-    return hex.match(/.{1,2}/g)
-      .map(b => String.fromCharCode(parseInt(b,16)))
-      .join('');
-  }catch(e){ return ""; }
+function fromHex(hex) {
+  try {
+    return hex
+      .trim()
+      .split(/\s+/)
+      .map(h => String.fromCodePoint(parseInt(h, 16)))
+      .join("");
+  } catch {
+    return "";
+  }
 }
-
 const params = new URLSearchParams(location.search);
 
 const appFile = params.get("app");
